@@ -1,17 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+// Docs - https://www.npmjs.com/package/react-aad-msal
+import { AzureAD } from "react-aad-msal";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
+import App from "./App";
+import { authProvider } from "./authProvider";
+
+ReactDOM.render(
+  <AzureAD provider={authProvider} forceLogin={true}>
     <App />
-  </React.StrictMode>
+  </AzureAD>,
+  document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
